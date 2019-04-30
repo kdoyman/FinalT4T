@@ -1,0 +1,82 @@
+﻿@model Tip4Trip_aka.Models.Reservation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reservation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HouseRes.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HouseRes.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.renter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.renter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Occupants)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Occupants)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBooking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBooking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustommerComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustommerComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePerNightCharged)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PricePerNightCharged)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

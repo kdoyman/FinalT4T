@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@model IEnumerable<Tip4Trip_aka.Models.House>
+
+<br /><br />
+<style>
+    .center {
+        text-align: right;
+    }
+</style>
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <div class="center">
+        @Html.TextBox("searching", null, new { @class = "form-control", @placeholder = "Search With Location Name" })
+        @Html.TextBox("Address", null, new { @class = "form-control", @placeholder = "Search With Address" })
+
+        <input type="submit" value="T4Trip Search" />
+    </div>
+}
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>House Location</th>
+            <th>House Address</th>
+            <th>House Dates</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3" style="color:red">
+                    No match
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Location.NameCity</td>
+                    <td>@item.Address </td>
+                    <td>@item.Description</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
