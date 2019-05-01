@@ -155,8 +155,11 @@ namespace Tip4Trip_aka.Controllers
         public ActionResult Register()
         {
             List<SelectListItem> list = new List<SelectListItem>();
-            foreach (var item in RoleManager.Roles)
+            foreach (var item in RoleManager.Roles) {
+                if (item.Name != "Admin") { 
              list.Add(new SelectListItem() { Value = item.Name, Text = item.Name });
+                }
+            }
             ViewBag.Roles = list;           
                 return View();
         }

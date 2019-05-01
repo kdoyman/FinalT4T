@@ -16,7 +16,7 @@ namespace Tip4Trip_aka.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Houses
-        [Authorize(Roles = "Owner")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var houses = db.Houses.Include(h => h.Location).Include(xxx => xxx.Reservations);

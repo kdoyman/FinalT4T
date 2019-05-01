@@ -72,7 +72,9 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.PricePerNightCharged, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model1 => model1.HouseRes.PriceperNight, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+               
                 @Html.EditorFor(model => model.PricePerNightCharged, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PricePerNightCharged, "", new { @class = "text-danger" })
             </div>
