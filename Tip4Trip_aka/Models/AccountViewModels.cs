@@ -64,6 +64,11 @@ namespace Tip4Trip_aka.Models
 
     public class RegisterViewModel
     {
+
+        [StringLength(100)]
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -79,6 +84,7 @@ namespace Tip4Trip_aka.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        public string Rolename { get;set; }
     }
 
     public class ResetPasswordViewModel
