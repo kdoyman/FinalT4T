@@ -8,8 +8,9 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" >
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -24,31 +25,45 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>
-                        @if (User.Identity.IsAuthenticated)
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li> @Html.ActionLink("Houses", "Index", "Houses")</li>
+                        <li>
+
+                            @Html.ActionLink("Reservations", "Index", "Reservations")
+                        </li>
+
+                        if (User.IsInRole("Admin"))
                         {
-
-                            if (User.IsInRole("Admin"))
-                            {
+                            <li>
                                 @Html.ActionLink("Roles", "Index", "Role")
-                                @Html.ActionLink("Houses", "Index", "Houses")
-                                @Html.ActionLink("Locations", "Index", "Locations")
-                                @Html.ActionLink("Reservations", "Index", "Reservations")
-                                @Html.ActionLink("mazi", "mazi", "Houses",new{idilicious=2},null)
-                            }
-                        }
+                            </li>
 
-                    </li>
+                            <li>
+                                @Html.ActionLink("Locations", "Index", "Locations")
+                            </li>
+
+                            <li>
+                                @Html.ActionLink("mazi", "mazi", "Houses", new { idilicious = 2 }, null)
+                            </li>
+                        }
+                    }
+
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
+
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Our ASP.NET Application Tip4Trip</p>
         </footer>
     </div>
 

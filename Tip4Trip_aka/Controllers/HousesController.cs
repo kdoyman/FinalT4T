@@ -14,7 +14,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace Tip4Trip_aka.Controllers
 {
-
+    [Authorize]
     public class HousesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

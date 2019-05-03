@@ -23,9 +23,10 @@
 
     <thead>
         <tr>
+            <th>House Municipality</th>
             <th>House Location</th>
             <th>House Address</th>
-            <th>House Dates</th>
+            <th>House Max Occupancy</th>
         </tr>
     </thead>
     <tbody>
@@ -41,12 +42,14 @@
         {
             foreach (var item in Model)
             {
-                <tr>
-                    <td>@item.Location.NameCity</td>
-                    <td>@item.Address </td>
-                    <td>@item.Description</td>
-                    <td>@Html.ActionLink("book","Create","Reservations")</td>
-                </tr>
+            <tr>
+                <td>@item.Location.NameMunicipality</td>
+                <td>@item.Location.NameCity</td>
+                <td>@item.Address </td>
+                <td>@item.MaxOccupancy</td>
+                <td>@Html.ActionLink("Availability", "mazi", "Houses", new { idilicious = item.Id }, null)</td>
+                <td>@Html.ActionLink("book", "Create", "Reservations")</td>
+            </tr>
             }
         }
     </tbody>

@@ -15,6 +15,7 @@ namespace Tip4Trip_aka.Controllers
 
         public ActionResult Index(string searching, string Address)
         {
+           
             return View(db.Houses.Include(mmn => mmn.Location).Where(x => x.Location.NameCity.Contains(searching) && x.Address.Contains(Address) || searching == null).ToList());
 
             //return View();

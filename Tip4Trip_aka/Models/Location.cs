@@ -11,7 +11,10 @@ namespace Tip4Trip_aka.Models
 
         public int Id { get; set; }
         [Required]
+        [StringLength(50)]
         public string NameCity { get; set; }
+        [Required]
+        [StringLength(50)]
         public string NameMunicipality { get; set; }
     }
 }

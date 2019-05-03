@@ -10,6 +10,7 @@ using Tip4Trip_aka.Models;
 
 namespace Tip4Trip_aka.Controllers
 {
+    [Authorize]
     public class ReservationsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

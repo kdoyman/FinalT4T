@@ -4,13 +4,18 @@
 }
 
 <h2>mazi</h2>
-onoma: @Model.Name<br/>
+onoma: @Model.Name<br />
 address
 <h3>@Model.House.Address</h3>
 house id:
 <h3>@Model.House.Id</h3>
 reservations count:
 <h3>@Model.Reservations1.Count()</h3>
-@foreach (Tip4Trip_aka.Models.Reservation item in Model.Reservations1)
-{<p>@item.StartDate</p>}
+@if (@Model.Reservations1.Count() == 0)
+{<span>Available all year long </span>}
+else
+{<span>Unavailable :<br/></span>
+    foreach (Tip4Trip_aka.Models.Reservation item in Model.Reservations1)
+    {<span>From : @item.StartDate</span><span>To : @item.EndDate</span><br />}
+}
 
