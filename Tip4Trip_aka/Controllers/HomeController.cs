@@ -8,6 +8,7 @@ using Tip4Trip_aka.Models;
 
 namespace Tip4Trip_aka.Controllers
 {
+    
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

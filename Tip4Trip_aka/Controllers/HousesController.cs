@@ -8,12 +8,17 @@ using System.Web;
 using System.Web.Mvc;
 using Tip4Trip_aka.Models;
 using Tip4Trip_aka.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+
 
 namespace Tip4Trip_aka.Controllers
 {
+
     public class HousesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationUser du = new ApplicationUser();
 
         // GET: Houses
         [Authorize(Roles = "Admin")]
@@ -25,18 +30,21 @@ namespace Tip4Trip_aka.Controllers
 
         public ActionResult mazi(int idilicious)
         {
-
+            
             //List<House> housesList = db.Houses.ToList();
             // var housesViewModelList = housesList.Select(x => new HouseReservationViewModel { House = x, Reservations1 = x.Reservations }).ToList();
             var housesList = db.Houses.Include(c => c.Location).Include(y => y.Reservations).Where(xs => xs.Id.Equals(idilicious)).ToList();
-            var ReservationsList = db.Reservations.ToList();
-            if (idilicious > 0 && idilicious <= ReservationsList.Count())
+            var ReservationsList = db.Reservations.Where(xc=>xc.HouseId.Equals(idilicious)).ToList();
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            if (idilicious >= db.Houses.Min(n=>n.Id) && idilicious <= db.Houses.Max(x=>x.Id))
             {
                 HouseReservationViewModel ViewModel = new HouseReservationViewModel
                 {
-                    House = housesList.Last(),
-                    Reservations1 = ReservationsList
-
+                    House = housesList.First(),
+                    Reservations1 = ReservationsList,
+                    Name=user.FullName
+                    
+                    
 
                 };
 
@@ -73,8 +81,9 @@ namespace Tip4Trip_aka.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Owner,Address,Description,LocationId,MaxOccupancy,PriceperNight")] House house)
+        public ActionResult Create([Bind(Include = "Id,Title,Owner,OwnerId,Address,Description,LocationId,MaxOccupancy,PriceperNight")] House house)
         {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             if (ModelState.IsValid)
             {
                 db.Houses.Add(house);
@@ -83,6 +92,7 @@ namespace Tip4Trip_aka.Controllers
             }
 
             ViewBag.LocationId = new SelectList(db.Locations, "Id", "NameCity", house.LocationId);
+            ViewBag.Owner= user;
             return View(house);
         }
 

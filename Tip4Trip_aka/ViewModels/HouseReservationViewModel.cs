@@ -8,6 +8,7 @@ namespace Tip4Trip_aka.ViewModels
 {
     public class HouseReservationViewModel
     {
+        public string Name { get; set; }
         public House House { get; set; }
         public List<Reservation> Reservations1 { get; set; }
     }
