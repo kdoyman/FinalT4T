@@ -5,6 +5,8 @@
 @model IEnumerable<Tip4Trip_aka.Models.House>
 
 <br /><br />
+<body id="home-back-img">
+</body>
 <style>
     .center {
         text-align: right;
@@ -19,45 +21,46 @@
         <input type="submit" value="T4Trip Search" />
     </div>
 }
-    <table class="table table-striped">
+<table class="table table-striped">
 
-        <thead>
+    <thead>
+        <tr>
+            <th>House ID</th>
+            <th>House Municipality</th>
+            <th>House Location</th>
+            <th>House Address</th>
+            <th>House Max Occupancy</th>
+            <th>Cost Per Night</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
             <tr>
-                <th>House ID</th>
-                <th>House Municipality</th>
-                <th>House Location</th>
-                <th>House Address</th>
-                <th>House Max Occupancy</th>
-                <th>Cost Per Night</th>
+                <td colspan="3" style="color:red">
+                    No match
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @if (Model.Count() == 0)
+        }
+        else
+        {
+            foreach (var item in Model)
             {
                 <tr>
-                    <td colspan="3" style="color:red">
-                        No match
-                    </td>
+                    <td>@item.Title</td>
+                    <td>@item.Location.NameMunicipality</td>
+                    <td>@item.Location.NameCity</td>
+                    <td>@item.Address </td>
+                    <td>@item.MaxOccupancy</td>
+                    <td>@item.PriceperNight</td>
+                    <td>@Html.ActionLink("Availability", "mazi", "Houses", new { idilicious = item.Id }, null)</td>
+                    <td>@Html.ActionLink("Book me now !", "Create", "Reservations")</td>
                 </tr>
             }
-            else
-            {
-                foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.Title</td>
-                        <td>@item.Location.NameMunicipality</td>
-                        <td>@item.Location.NameCity</td>
-                        <td>@item.Address </td>
-                        <td>@item.MaxOccupancy</td>
-                        <td>@item.PriceperNight</td>
-                        <td>@Html.ActionLink("Availability", "mazi", "Houses", new { idilicious = item.Id }, null)</td>
-                        <td>@Html.ActionLink("Book me now !", "Create", "Reservations")</td>
-                    </tr>
-                }
 
 
 
-            }
-        </tbody>
-        </table>
+        }
+    </tbody>
+</table>
+</body>
