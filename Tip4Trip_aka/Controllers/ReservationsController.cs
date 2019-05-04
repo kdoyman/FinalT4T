@@ -53,9 +53,17 @@ namespace Tip4Trip_aka.Controllers
         {
             if (ModelState.IsValid)
             {
+                foreach (Reservation item in db.Reservations.Where(x => x.HouseId == reservation.HouseId))
+                {
+                    if ((reservation.StartDate >= item.StartDate && reservation.StartDate < item.EndDate) || (reservation.EndDate > item.StartDate && reservation.EndDate <= item.EndDate))
+                    {
+                        return Content(" The Dates You want to rent the House are allready closed , Sorry ! Please check the list and try again ");
+                    }
+
+                }
                 db.Reservations.Add(reservation);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("mazi","Houses",new { idilicious=reservation.HouseId });
             }
 
             ViewBag.HouseId = new SelectList(db.Houses, "Id", "Title", reservation.HouseId);

@@ -27,11 +27,11 @@ namespace Tip4Trip_aka.Controllers
             var houses = db.Houses.Include(h => h.Location).Include(xxx => xxx.Reservations);
             return View(houses.ToList());
         }
-
+        
         public ActionResult mazi(int idilicious)
         {
             
-            //List<House> housesList = db.Houses.ToList();
+            List<House> housesList3 = db.Houses.ToList();
             // var housesViewModelList = housesList.Select(x => new HouseReservationViewModel { House = x, Reservations1 = x.Reservations }).ToList();
             var housesList = db.Houses.Include(c => c.Location).Include(y => y.Reservations).Where(xs => xs.Id.Equals(idilicious)).ToList();
             var ReservationsList = db.Reservations.Where(xc=>xc.HouseId.Equals(idilicious)).ToList();
@@ -72,8 +72,14 @@ namespace Tip4Trip_aka.Controllers
         // GET: Houses/Create
         public ActionResult Create()
         {
+            
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            House ase = new House() ;
+            List<House> list = new List<House> {  };
+            list.Add(ase)
+;            UserHousesViewModel ViewModel = new UserHousesViewModel { User = user, Houses = list };
             ViewBag.LocationId = new SelectList(db.Locations, "Id", "NameCity");
-            return View();
+            return View(ViewModel);
         }
 
         // POST: Houses/Create
@@ -90,10 +96,11 @@ namespace Tip4Trip_aka.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            List<House> list = new List<House> { };
+            list.Add(house);
             ViewBag.LocationId = new SelectList(db.Locations, "Id", "NameCity", house.LocationId);
-            ViewBag.Owner= user;
-            return View(house);
+            UserHousesViewModel ViewModel = new UserHousesViewModel { User = user, Houses = list };
+            return View(ViewModel);
         }
 
         // GET: Houses/Edit/5
