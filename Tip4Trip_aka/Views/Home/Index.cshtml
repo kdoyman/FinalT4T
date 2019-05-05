@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-@model IEnumerable<Tip4Trip_aka.Models.House>
+@model Tip4Trip_aka.ViewModels.HousesDates
 
 <br /><br />
 <body id="home-back-img">
@@ -14,12 +14,13 @@
 </style>
 @using (Html.BeginForm("Index", "Home", FormMethod.Get))
 {
-    <div class="center">
-        @Html.TextBox("searching", null, new { @class = "form-control", @placeholder = "Search With Location Name" })
-        @Html.TextBox("Address", null, new { @class = "form-control", @placeholder = "Search With Address" })
-
-        <input type="submit" value="T4Trip Search" />
-    </div>
+<div class="center">
+    @Html.TextBox("searching", null, new { @class = "form-control", @placeholder = "Search With Location Name" })
+    @Html.TextBox("Address", null, new { @class = "form-control", @placeholder = "Search With Address" })
+    @Html.TextBox("Sstartdate", null, new { @class = "form-control", @placeholder = "Search With Start Date" })
+    @Html.TextBox("Enddate", null, new { @class = "form-control", @placeholder = "Search With End Date" })
+    <input type="submit" value="T4Trip Search" />
+</div>
 }
 <table class="table table-striped">
 
@@ -34,7 +35,7 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.Count() == 0)
+        @if (Model.houses.Count() == 0)
         {
             <tr>
                 <td colspan="3" style="color:red">
@@ -44,7 +45,7 @@
         }
         else
         {
-            foreach (var item in Model)
+            foreach (Tip4Trip_aka.Models.House item in Model.houses)
             {
                 <tr>
                     <td>@item.Title</td>
@@ -56,11 +57,20 @@
                     <td>@Html.ActionLink("Availability", "mazi", "Houses", new { idilicious = item.Id }, null)</td>
                     <td>@Html.ActionLink("Book me now !", "Create", "Reservations")</td>
                 </tr>
-            }
-
-
-
+                foreach (Tip4Trip_aka.Models.Reservation itemres in Model.reservations.Where(mn => mn.HouseId == item.Id))
+                {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@itemres.StartDate</td>
+                    <td>@itemres.EndDate</td>
+                    <br />
+                </tr>
+                }
         }
-    </tbody>
-</table>
+
+
+
+    }
+        </tbody>
+    </table>
 </body>

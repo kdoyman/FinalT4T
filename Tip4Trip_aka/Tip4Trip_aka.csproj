@@ -226,6 +226,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\HouseReservationViewModel.cs" />
+    <Compile Include="ViewModels\HousesDates.cs" />
     <Compile Include="ViewModels\UserHousesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
