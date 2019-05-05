@@ -57,15 +57,20 @@
                     <td>@Html.ActionLink("Availability", "mazi", "Houses", new { idilicious = item.Id }, null)</td>
                     <td>@Html.ActionLink("Book me now !", "Create", "Reservations")</td>
                 </tr>
-                foreach (Tip4Trip_aka.Models.Reservation itemres in Model.reservations.Where(mn => mn.HouseId == item.Id))
+                if (Model.reservations.Where(mn => mn.HouseId == item.Id).Count() ==0)
                 {
+                <th>Available !!</th> }
+            foreach (Tip4Trip_aka.Models.Reservation itemres in Model.reservations.Where(mn => mn.HouseId == item.Id))
+            {
+
                 <tr>
                     <td>@item.Title</td>
+                    <th>It is Reserved</th>
                     <td>@itemres.StartDate</td>
                     <td>@itemres.EndDate</td>
                     <br />
                 </tr>
-                }
+            }
         }
 
 

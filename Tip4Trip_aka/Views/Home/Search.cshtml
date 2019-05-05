@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Searching";
+}
+
+<h2>T4Trip Search</h2>
+
+
+@model Tip4Trip_aka.ViewModels.HousesDates
+
+<br /><br />
+<body id="home-back-img">
+</body>
+<style>
+    .center {
+        text-align: right;
+    }
+</style>
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <div class="center">
+        @Html.TextBox("searching", null, new { @class = "form-control", @placeholder = "Search With Location Name" })
+        @Html.TextBox("Address", null, new { @class = "form-control", @placeholder = "Search With Address" })
+        @Html.TextBox("Sstartdate", null, new { @class = "form-control", @placeholder = "Search With Start Date" })
+        @Html.TextBox("Enddate", null, new { @class = "form-control", @placeholder = "Search With End Date" })
+        <input type="submit" value="T4Trip Search" />
+    </div>
+}
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>House ID</th>
+                <th>House Municipality</th>
+                <th>House Location</th>
+                <th>House Address</th>
+                <th>House Max Occupancy</th>
+                <th>Cost Per Night</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.houses.Count() == 0)
+            {
+                <tr>
+                    <td colspan="3" style="color:red">
+                        No match
+                    </td>
+                </tr>
+            }
+            else
+            {
+                foreach (Tip4Trip_aka.Models.House item in Model.houses)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.Location.NameMunicipality</td>
+                        <td>@item.Location.NameCity</td>
+                        <td>@item.Address </td>
+                        <td>@item.MaxOccupancy</td>
+                        <td>@item.PriceperNight</td>
+                        <td>@Html.ActionLink("Availability", "mazi", "Houses", new { idilicious = item.Id }, null)</td>
+                        <td>@Html.ActionLink("Book me now !", "Create", "Reservations")</td>
+                    </tr>
+                    if (Model.reservations.Where(mn => mn.HouseId == item.Id) == null)
+                    {
+                    <th>Available !!</th> }
+                foreach (Tip4Trip_aka.Models.Reservation itemres in Model.reservations.Where(mn => mn.HouseId == item.Id))
+                {
+
+                    <tr>
+                        <td>@item.Title</td>
+                        <th>It is Reserved</th>
+                        <td>@itemres.StartDate</td>
+                        <td>@itemres.EndDate</td>
+                        <br />
+                    </tr>
+                }
+            }
+
+
+
+        }
+            </tbody>
+        </table>
+    </body>
