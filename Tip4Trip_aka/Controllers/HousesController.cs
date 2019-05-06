@@ -87,9 +87,11 @@ namespace Tip4Trip_aka.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Owner,OwnerId,Address,Description,LocationId,MaxOccupancy,PriceperNight")] House house)
+        public ActionResult Create([Bind(Include = "Id,Title,OwnerId,Address,Description,LocationId,MaxOccupancy,PriceperNight")] House house)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+           // house.Owner = user;
+           // house.OwnerId = user.Id;
             if (ModelState.IsValid)
             {
                 db.Houses.Add(house);
