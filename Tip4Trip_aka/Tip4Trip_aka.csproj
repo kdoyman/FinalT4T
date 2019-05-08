@@ -442,6 +442,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Houses\Imageget.cshtml" />
+    <Content Include="Views\Home\MyTrip.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

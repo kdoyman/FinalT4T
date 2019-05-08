@@ -10,5 +10,6 @@ namespace Tip4Trip_aka.ViewModels
     {
        public ApplicationUser User{ get; set; } 
         public List<House> Houses { get; set; }
+        public List<HouseImage> HouseImages { get; set; }
     }
 }

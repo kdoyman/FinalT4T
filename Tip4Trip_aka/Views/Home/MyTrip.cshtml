@@ -1,0 +1,35 @@
+﻿@model Tip4Trip_aka.ViewModels.UserHousesViewModel
+@{
+    ViewBag.Title = "MyTrip";
+}
+
+<h2>MyTrip</h2>
+
+<h4>Hi </h4>
+<span>@Model.User.Email</span>
+
+house id:
+
+@foreach (Tip4Trip_aka.Models.House it in Model.Houses)
+{
+    <h3>@it.Address</h3>
+    <span>Posous xvraei :</span>
+    <h3>@it.MaxOccupancy</h3>
+    <span>Price :</span>
+    <h3>@it.PriceperNight</h3>
+    foreach (var obje in Model.HouseImages.Where(c => c.housId == it.Id))
+    {
+        if (obje.ImagePath != null)
+        {
+            string FileName = Path.GetFileNameWithoutExtension(obje.ImagePath);
+
+            //To Get File Extension  
+            string FileExtension = Path.GetExtension(obje.ImagePath);
+
+            //Add Current Date To Attached File Name  
+            FileName = FileName.Trim() + FileExtension;
+           <img src="../../UserImages/@FileName" />
+            <a href="@obje.ImagePath">loll</a>
+        }
+    }
+}

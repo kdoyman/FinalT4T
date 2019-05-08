@@ -42,6 +42,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item m-lg-3"> @Html.ActionLink("Houses", "Index", "Houses")</li>
+                        <li class="nav-item m-lg-3"> @Html.ActionLink("MyTip4Trip", "MyTrip", "Home")</li>
                         <li class="nav-item m-lg-3">
                             @Html.ActionLink("Reservations", "Index", "Reservations")
                         </li>

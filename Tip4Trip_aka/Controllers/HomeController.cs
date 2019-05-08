@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using Tip4Trip_aka.Models;
 using Tip4Trip_aka.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace Tip4Trip_aka.Controllers
 {
@@ -29,6 +31,19 @@ namespace Tip4Trip_aka.Controllers
             return View(to_search_mas );
 
             //return View();
+        }
+        public ActionResult MyTrip()
+        {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var MyHouses = db.Houses.Where(v => v.Owner.Id == user.Id);
+            var Images = db.HouseImages.ToList();
+            //List<string> paths = new List<string>();
+            //foreach(House item in MyHouses) {paths.Add(Images.) }
+            //var Reservations = db.Reservations.Where(b=>b.)
+            UserHousesViewModel Myall = new UserHousesViewModel() { User = user, Houses = MyHouses.ToList(), HouseImages=Images };
+
+                       
+            return View(Myall);
         }
 
         public ActionResult About()

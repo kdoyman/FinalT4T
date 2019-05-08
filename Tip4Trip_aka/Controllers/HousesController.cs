@@ -52,7 +52,7 @@ namespace Tip4Trip_aka.Controllers
             string FileExtension = Path.GetExtension(membervalues.ImageFile.FileName);
 
             //Add Current Date To Attached File Name  
-            FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
+            FileName =  FileName.Trim() + FileExtension;
 
             //Get Upload path from Web.Config file AppSettings.  
             string UploadPath = @"C:\Users\muntan\source\repos\Tip4Trip_aka\Tip4Trip_aka\UserImages\";
