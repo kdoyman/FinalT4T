@@ -10,7 +10,7 @@ using Tip4Trip_aka.Models;
 using Tip4Trip_aka.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-
+using System.IO;
 
 namespace Tip4Trip_aka.Controllers
 {
@@ -27,7 +27,58 @@ namespace Tip4Trip_aka.Controllers
             var houses = db.Houses.Include(h => h.Location).Include(xxx => xxx.Reservations);
             return View(houses.ToList());
         }
-        
+        [HttpGet]
+        public ActionResult Imageget(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            House house = db.Houses.Find(id);
+            if (house == null)
+            {
+                return HttpNotFound();
+            }
+            HouseImage hsimg = new HouseImage() { housId = house.Id };
+            return View(hsimg);
+        }
+        [HttpPost]
+        public ActionResult Imageget(HouseImage membervalues)
+        {
+            //Use Namespace called :  System.IO  
+            string FileName = Path.GetFileNameWithoutExtension(membervalues.ImageFile.FileName);
+
+            //To Get File Extension  
+            string FileExtension = Path.GetExtension(membervalues.ImageFile.FileName);
+
+            //Add Current Date To Attached File Name  
+            FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
+
+            //Get Upload path from Web.Config file AppSettings.  
+            string UploadPath = @"C:\Users\muntan\source\repos\Tip4Trip_aka\Tip4Trip_aka\UserImages\";
+
+            //Its Create complete path to store in server.  
+            membervalues.ImagePath = UploadPath + FileName;
+
+            //To copy and save file into server.  
+            membervalues.ImageFile.SaveAs(membervalues.ImagePath);
+          
+              HouseImage _member = new HouseImage();
+              _member.ImagePath = membervalues.ImagePath;
+            _member.housId = membervalues.housId;
+            //   _member.Name = membervalues.Name;
+            //    _member.PhoneNumber = membervalues.PhoneNumber;
+            //  db.tblMembers.Add(_member);
+            //    db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                db.HouseImages.Add(_member);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
         public ActionResult mazi(int idilicious)
         {
             

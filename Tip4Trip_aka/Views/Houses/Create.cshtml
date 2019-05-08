@@ -39,6 +39,9 @@
         </div>
     </div>
 
+    
+
+
     <div class="form-group">
         @Html.LabelFor(model => model.Houses.First().LocationId, "LocationId", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -64,12 +67,12 @@
     </div>
 
     <div class="form-group">
-    @Html.LabelFor(model => model.User.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.User.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DisplayFor(modelItem => modelItem.User.FullName)
             @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
         </div>
-</div>
+    </div>
 
     @* @Model.Owner=System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());*@
     <div class="form-group">
@@ -82,4 +85,5 @@
 
 <div>
     @Html.ActionLink("Back to List", "Index")
+  
 </div>

@@ -215,9 +215,14 @@
     <Compile Include="Migrations\201905031916510_paraskeyh.Designer.cs">
       <DependentUpon>201905031916510_paraskeyh.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905072057054_trith3.cs" />
+    <Compile Include="Migrations\201905072057054_trith3.Designer.cs">
+      <DependentUpon>201905072057054_trith3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\House.cs" />
+    <Compile Include="Models\HouseImage.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -436,6 +441,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Houses\Imageget.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -464,12 +470,18 @@
     <EmbeddedResource Include="Migrations\201905031916510_paraskeyh.resx">
       <DependentUpon>201905031916510_paraskeyh.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905072057054_trith3.resx">
+      <DependentUpon>201905072057054_trith3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserImages\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

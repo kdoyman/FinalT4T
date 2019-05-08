@@ -16,7 +16,7 @@ reservations count:
 else
 {<span>Unavailable :<br /></span>
     foreach (Tip4Trip_aka.Models.Reservation item in Model.Reservations1)
-    {<span>From : @item.StartDate</span><span>To : @item.EndDate</span><br />}
+    {<span>From : @item.StartDate.ToShortDateString()</span><span>&nbsp; To : @item.EndDate.ToShortDateString()</span><br />}
 }
 
 @Html.ActionLink("Back to Home", "Index", "Home")

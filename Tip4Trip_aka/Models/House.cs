@@ -42,6 +42,11 @@ namespace Tip4Trip_aka.Models
         // public int ReserveId { get; set; }
 
         string image;
+    //    [Display(Name="Upload File")]
+     //   public string ImagePath { get; set; }
+
+      //  public HttpPostedFileBase ImageFile { get; set; }
+
         [Required]
         [Range(0, 30, ErrorMessage = "Max occupancy must be between 0-30")]
         public int MaxOccupancy { get; set; }

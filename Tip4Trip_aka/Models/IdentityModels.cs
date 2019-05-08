@@ -37,7 +37,7 @@ namespace Tip4Trip_aka.Models
         {
         }
         public DbSet<House> Houses { get; set; }
-
+        
         public DbSet<Location> Locations { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
 
@@ -47,5 +47,7 @@ namespace Tip4Trip_aka.Models
         }
 
         public System.Data.Entity.DbSet<Tip4Trip_aka.Models.RoleViewModel> RoleViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<Tip4Trip_aka.Models.HouseImage> HouseImages { get; set; }
     }
 }

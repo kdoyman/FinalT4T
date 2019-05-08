@@ -19,6 +19,8 @@ namespace Tip4Trip_aka.Models
         //[Range(typeof(DateTime),"Reservation.StartDate","??",ErrorMessage ="End Date is earlier than Start Date")]
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
+
+       
         
         public int Occupants { get; set; }
 

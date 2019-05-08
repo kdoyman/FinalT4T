@@ -24,7 +24,7 @@ namespace Tip4Trip_aka.Controllers
             if (Sstartdate == null && Enddate == null) {  res = db.Reservations; }
             
             
-           HousesDates to_search_mas = new HousesDates { houses = Hous.ToList(), reservations = res.ToList() };
+            HousesDates to_search_mas = new HousesDates { houses = Hous.ToList(), reservations = res.ToList() };
             if (to_search_mas == null) { return View(); }
             return View(to_search_mas );
 
