@@ -443,6 +443,7 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Houses\Imageget.cshtml" />
     <Content Include="Views\Home\MyTrip.cshtml" />
+    <Content Include="Views\Home\t4t.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

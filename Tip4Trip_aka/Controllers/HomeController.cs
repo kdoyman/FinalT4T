@@ -32,7 +32,7 @@ namespace Tip4Trip_aka.Controllers
             if (Sstartdate == null && Enddate == null) {  res4 = db.Reservations.ToList(); }
             
             
-            HousesDates to_search_mas = new HousesDates { houses = Hous.ToList(), reservations = res4.ToList() };
+            HousesDates to_search_mas = new HousesDates { houses = Hous.ToList(), reservations = res4.Distinct().ToList() };
             if (to_search_mas == null) { return View(); }
             return View(to_search_mas );
 
@@ -58,7 +58,12 @@ namespace Tip4Trip_aka.Controllers
 
             return View();
         }
+        public ActionResult t4t()
+        {
+            ViewBag.Message = "Your own page.";
 
+            return View();
+        }
 
         public ActionResult Contact()
         {
