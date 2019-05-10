@@ -11,5 +11,6 @@ namespace Tip4Trip_aka.ViewModels
         public List<House> houses { get; set; }
 
         public List<Reservation> reservations { get; set; }
+        public List<HouseImage> HouseImages { get; set; }
     }
 }

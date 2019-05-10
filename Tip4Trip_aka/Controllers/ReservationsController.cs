@@ -49,7 +49,7 @@ namespace Tip4Trip_aka.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,HouseId,renter,StartDate,EndDate,Occupants,DateOfBooking,CustommerComments,PricePerNightCharged")] Reservation reservation)
+        public ActionResult Create([Bind(Include = "Id,HouseId,Renter,StartDate,EndDate,Occupants,DateOfBooking,CustommerComments,PricePerNightCharged")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {

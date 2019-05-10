@@ -12,7 +12,7 @@
         text-align: right;
     }
 </style>
-@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+@using (Html.BeginForm("Search", "Home", FormMethod.Get))
 {
 <div class="center">
     @Html.TextBox("searching", null, new { @class = "form-control", @placeholder = "Search With Location Name" })
@@ -23,7 +23,14 @@
     <input type="submit" value="T4Trip Search" />
 </div>
 }
-<table class="table table-striped">
+
+
+
+
+
+
+
+@*<table class="table table-striped">
 
     <thead>
         <tr>
@@ -79,4 +86,4 @@
     }
         </tbody>
     </table>
-</body>
+</body>*@

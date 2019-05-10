@@ -1,13 +1,14 @@
-﻿
-@{
+﻿@{
+    /**/
+
     ViewBag.Title = "Searching";
 }
 
-<h2>T4Trip Search</h2>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
 
 @model Tip4Trip_aka.ViewModels.HousesDates
-
 <br /><br />
 <body id="home-back-img">
 </body>
@@ -16,70 +17,96 @@
         text-align: right;
     }
 </style>
-@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+@using (Html.BeginForm("Search", "Home", FormMethod.Get))
 {
     <div class="center">
         @Html.TextBox("searching", null, new { @class = "form-control", @placeholder = "Search With Location Name" })
         @Html.TextBox("Address", null, new { @class = "form-control", @placeholder = "Search With Address" })
         @Html.TextBox("Sstartdate", null, new { @class = "form-control", @placeholder = "Search With Start Date" })
+
         @Html.TextBox("Enddate", null, new { @class = "form-control", @placeholder = "Search With End Date" })
         <input type="submit" value="T4Trip Search" />
     </div>
 }
-    <table class="table table-striped">
 
-        <thead>
-            <tr>
-                <th>House ID</th>
-                <th>House Municipality</th>
-                <th>House Location</th>
-                <th>House Address</th>
-                <th>House Max Occupancy</th>
-                <th>Cost Per Night</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Search results</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
             @if (Model.houses.Count() == 0)
             {
-                <tr>
-                    <td colspan="3" style="color:red">
-                        No match
-                    </td>
-                </tr>
+                <p colspan="3" style="color:red">
+                    No match
+                    <br />
+                    <br />
+                    @Html.ActionLink("Try a new Search", "Index", "Home")
+                </p>
             }
             else
             {
                 foreach (Tip4Trip_aka.Models.House item in Model.houses)
                 {
-                    <tr>
-                        <td>@item.Title</td>
-                        <td>@item.Location.NameMunicipality</td>
-                        <td>@item.Location.NameCity</td>
-                        <td>@item.Address </td>
-                        <td>@item.MaxOccupancy</td>
-                        <td>@item.PriceperNight</td>
-                        <td>@Html.ActionLink("Availability", "mazi", "Houses", new { idilicious = item.Id }, null)</td>
-                        <td>@Html.ActionLink("Book me now !", "Create", "Reservations")</td>
-                    </tr>
-                    if (Model.reservations.Where(mn => mn.HouseId == item.Id) == null)
+                <div class="col-xs-6 col-md-3">
+                    @if (Model.HouseImages.Where(c => c.housId == item.Id).Count() == 0)
                     {
-                    <th>Available !!</th> }
-                foreach (Tip4Trip_aka.Models.Reservation itemres in Model.reservations.Where(mn => mn.HouseId == item.Id))
-                {
+                        <a href="@Url.Action("Details", "Houses",new { id = item.Id })" class="thumbnail">
+                            <img src="https://images.unsplash.com/photo-1475855581690-80accde3ae2b" alt="Pic">
+                        </a>
+                    }
 
-                    <tr>
-                        <td>@item.Title</td>
-                        <th>It is Reserved</th>
-                        <td>@itemres.StartDate</td>
-                        <td>@itemres.EndDate</td>
+                    @foreach (var obje in Model.HouseImages.Where(c => c.housId == item.Id))
+                    {
+                        if (obje.ImagePath != null)
+                        {
+                            string FileName = Path.GetFileNameWithoutExtension(obje.ImagePath);
+
+                            //To Get File Extension
+                            string FileExtension = Path.GetExtension(obje.ImagePath);
+
+                            //Add Current Date To Attached File Name
+                            FileName = FileName.Trim() + FileExtension;
+
+                            <a href="@Url.Action("Details", "Houses",new { id = item.Id })" class="thumbnail">
+                                <img src="../../UserImages/@FileName" alt="Pic">
+                            </a>
+
+
+                        }
+                        break;
+                    }
+                    <ul>
+                        <li>House Title: @item.Title</li>
+                        <li>Adress:@item.Address </li>
+                        <li>Maximum occupancy:@item.MaxOccupancy </li>
+                        <li>Price per night:@item.PriceperNight </li>
+                    </ul>
+                    <p> @Html.ActionLink("Book me now !", "Create", "Reservations", new { HouseId = item.Id, Occupants = item.MaxOccupancy, PricePerNightCharged = item.PriceperNight, DateOfBooking = DateTime.Today }, new { @class = "btn btn-default" })</p>
+                    @if (Model.reservations.Where(mn => mn.HouseId == item.Id).Count() == 0)
+                    {
+                        <th>Available !!</th>}
+                    @if (Model.reservations.Where(mn => mn.HouseId == item.Id).Count() != 0)
+                    {
+                        <th>It is Reserved</th>}
+                    @foreach (Tip4Trip_aka.Models.Reservation itemres in Model.reservations.Where(mn => mn.HouseId == item.Id))
+                    {
+
+
+
+                        
+                        <li>
+                            From:
+                            @itemres.StartDate.Date
+                            To:
+                            @itemres.EndDate.Date
+                        </li>
                         <br />
-                    </tr>
+
+                    }
+                </div>
                 }
             }
-
-
-
-        }
-            </tbody>
-        </table>
-    </body>
+        </div>
+    </div>
+</div>

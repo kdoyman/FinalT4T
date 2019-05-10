@@ -219,6 +219,14 @@
     <Compile Include="Migrations\201905072057054_trith3.Designer.cs">
       <DependentUpon>201905072057054_trith3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905101850487_newn.cs" />
+    <Compile Include="Migrations\201905101850487_newn.Designer.cs">
+      <DependentUpon>201905101850487_newn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905102029384_newn2.cs" />
+    <Compile Include="Migrations\201905102029384_newn2.Designer.cs">
+      <DependentUpon>201905102029384_newn2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\House.cs" />
@@ -440,10 +448,10 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Houses\Imageget.cshtml" />
     <Content Include="Views\Home\MyTrip.cshtml" />
     <Content Include="Views\Home\t4t.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -474,6 +482,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905072057054_trith3.resx">
       <DependentUpon>201905072057054_trith3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905101850487_newn.resx">
+      <DependentUpon>201905101850487_newn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905102029384_newn2.resx">
+      <DependentUpon>201905102029384_newn2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
