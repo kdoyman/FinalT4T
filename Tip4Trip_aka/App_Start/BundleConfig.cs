@@ -23,7 +23,8 @@ namespace Tip4Trip_aka
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/font-awesome.css",
+                      "~/Content/bootstrap-yeti.css",
                       "~/Content/site.css"));
         }
     }

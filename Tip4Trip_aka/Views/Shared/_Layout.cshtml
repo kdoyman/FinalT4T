@@ -29,8 +29,9 @@
         <a href="@Url.Action("Index", "Home")">
             <div src="" class="image-link"></div>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="animated-icon1"><span></span><span></span><span></span></div>
         </button>
         <div class="container" id="navbarSupportedContent">
             <div class="collapse navbar-collapse ml-5 mx-auto" id="navbarSupportedContent">
@@ -38,18 +39,22 @@
                     <li class="nav-item m-lg-3">@Html.ActionLink("Home", "Index", "Home")</li>
                     <li class="nav-item m-lg-3">@Html.ActionLink("About", "About", "Home")</li>
                     <li class="nav-item m-lg-3">@Html.ActionLink("Contact", "Contact", "Home")</li>
-                   
+
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item m-lg-3"> @Html.ActionLink("Houses", "Index", "Houses")</li>
-                        <li class="nav-item m-lg-3"> @Html.ActionLink("MyTip4Trip", "MyTrip", "Home")</li>
+                        <li class="nav-item m-lg-3">
+                            <a href="@Url.Action("MyTrip", "Home")">
+                                <div src="" class="image-mytrip-link"></div>
+                            </a>
+                        </li>
                         <li class="nav-item m-lg-3">
                             @Html.ActionLink("Reservations", "Index", "Reservations")
                         </li>
 
                         if (User.IsInRole("Admin"))
                         {
-                            
+
 
                             <li class="nav-item m-lg-3">
                                 @Html.ActionLink("Locations", "Index", "Locations")
@@ -69,15 +74,132 @@
                 </form>*@
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="container-fluid body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Tip4Trip App</p>
-        </footer>
     </div>
+    <footer class="page-footer font-small mt-2">
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left mt-5">
+
+            <!-- Grid row -->
+            <div class="row mt-3 dark-grey-text">
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-5 col-xl-4 mb-4 mt-4">
+
+                    <!-- Content -->
+                    <h6 class="text-uppercase font-weight-bold">Our Company</h6>
+                    <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        If you are searching for an appartment to rent or to register your own appartment for renting, you are at the right place! Tip4Trip is a booking platform for appartments and housing in Northern Greece.
+                    </p>
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Legal Stuff</h6>
+                    <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <a class="dark-grey-text" href="#">Terms of Use</a>
+                    </p>
+                    <p>
+                        <a class="dark-grey-text" href="#">Privacy Policy</a>
+                    </p>
+                    <p>
+                        <a class="dark-grey-text" href="#">Cookies Policy</a>
+                    </p>
+                    <p>
+                        <a class="dark-grey-text" href="#">GDPR - Data & Delete Request</a>
+                    </p>
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                    <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <i class="fa fa-home mr-3"></i> Tsimiski 35, Thessaloniki, Greece
+                    </p>
+                    <p>
+                        <i class="fa fa-envelope mr-3"></i> info@deka-team.com
+                    </p>
+                    <p>
+                        <i class="fa fa-phone mr-3"></i> + 30 2310 634 567
+                    </p>
+                    <p>
+                        <i class="fa fa-print mr-3"></i> + 30 2310 634 568
+                    </p>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+        <!-- Copyright -->
+        <div class="container-fluid">
+            <div id="footer">
+                <!-- Grid row-->
+                <div class="row d-flex align-items-center">
+                    <div class="footer-copyright col-md-6 col-lg-5 text-md-left text-white-50 m-3">
+                        <p>&copy; @DateTime.Now.Year - Tip4Trip App</p>
+                    </div>
+
+                    <div id="social-links" class="col-md-7 col-lg-6 text-md-right text-white-50 m-3">
+
+                        <!-- Facebook -->
+                        <a class="fb-ic" href="#">
+                            <i class="fa fa-facebook-f white-text mr-4"> </i>
+                        </a>
+                        <!-- Twitter -->
+                        <a class="tw-ic" href="#">
+                            <i class="fa fa-twitter white-text mr-4"> </i>
+                        </a>
+                        <!--Linkedin -->
+                        <a class="li-ic" href="#">
+                            <i class="fa fa-linkedin white-text mr-4"> </i>
+                        </a>
+                        <!--Instagram-->
+                        <a class="ins-ic" href="#">
+                            <i class="fa fa-instagram white-text"> </i>
+                        </a>
+
+                    </div>
+                    <!-- Grid column -->
+
+                </div>
+                <!-- Grid row-->
+
+            </div>
+
+        </div>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $('.first-button').on('click', function () {
+                $('.animated-icon1').toggleClass('open');
+            });
+            $('.second-button').on('click', function () {
+
+                $('.animated-icon2').toggleClass('open');
+            });
+            $('.third-button').on('click', function () {
+
+                $('.animated-icon3').toggleClass('open');
+            });
+        });</script>
 </body>
 </html>
