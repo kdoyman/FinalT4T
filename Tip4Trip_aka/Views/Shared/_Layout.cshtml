@@ -6,6 +6,12 @@
     <title>@ViewBag.Title - Tip4Trip - Your Vacation Friend</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui")
+    @RenderSection("scripts", required: false)
+    <link rel="stylesheet" href="@Url.Content("~/Content/themes/base/jquery-ui.css")" />
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -25,7 +31,7 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light shadow">
         <a href="@Url.Action("Index", "Home")">
             <div src="" class="image-link"></div>
         </a>
@@ -34,7 +40,7 @@
             <div class="animated-icon1"><span></span><span></span><span></span></div>
         </button>
         <div class="container" id="navbarSupportedContent">
-            <div class="collapse navbar-collapse ml-5 mx-auto" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse ml-5 mx-auto">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item m-lg-3">@Html.ActionLink("Home", "Index", "Home")</li>
                     <li class="nav-item m-lg-3">@Html.ActionLink("About", "About", "Home")</li>
@@ -42,6 +48,7 @@
 
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <li class="nav-item m-lg-3">@Html.ActionLink("Search", "Search", "Home")</li>
                         <li class="nav-item m-lg-3"> @Html.ActionLink("Houses", "Index", "Houses")</li>
                         <li class="nav-item m-lg-3">
                             <a href="@Url.Action("MyTrip", "Home")">
@@ -69,9 +76,9 @@
                 @Html.Partial("_LoginPartial")
             </div>
             @*<form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>*@
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>*@
         </div>
     </nav>
     <div class="container-fluid body-content">
@@ -147,7 +154,7 @@
         </div>
         <!-- Footer Links -->
         <!-- Copyright -->
-        <div class="container-fluid">
+        <div class="container-fluid" id="footer">
             <div id="footer">
                 <!-- Grid row-->
                 <div class="row d-flex align-items-center">
@@ -184,9 +191,7 @@
 
         </div>
     </footer>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+  
     <script>
         $(document).ready(function () {
             $('.first-button').on('click', function () {

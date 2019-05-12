@@ -55,17 +55,15 @@ namespace Tip4Trip_aka.Controllers
 
             return View();
         }
-        public ActionResult Search(string searching, string Address, DateTime? Sstartdate, DateTime? Enddate)
+        public ActionResult Search(string searching, DateTime? Sstartdate, DateTime? Enddate)
         {
-            var Hous = db.Houses.Include(xxx => xxx.Reservations).Include(mmn => mmn.Location).Where(x => x.Location.NameCity.Contains(searching) && x.Address.Contains(Address));
+            var Hous = db.Houses.Include(xxx => xxx.Reservations).Include(mmn => mmn.Location).Where(x => x.Location.NameCity.Contains(searching));
 
             var res = db.Reservations.Where(c => (c.StartDate <= Sstartdate.Value) && (c.EndDate >= Sstartdate.Value)).ToList();
             var res2 = db.Reservations.Where(c => (c.StartDate >= Sstartdate.Value) && (c.StartDate <= Enddate.Value)).ToList();
             var res3 = db.Reservations.Where(c => (c.EndDate >= Enddate.Value) && (c.StartDate <= Enddate.Value)).ToList();
             var res12 = res.Concat(res2);
             var res4 = res3.Concat(res12);
-
-
             // var res2 = db.Reservations.Where(f => (f.EndDate >= Enddate.Value)&& (f.StartDate<= Enddate.Value));
             // var res3 = res.Concat(res2);
             if (Sstartdate == null && Enddate == null) { res4 = db.Reservations.ToList(); }

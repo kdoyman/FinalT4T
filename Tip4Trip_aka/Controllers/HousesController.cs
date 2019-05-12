@@ -21,7 +21,7 @@ namespace Tip4Trip_aka.Controllers
         private ApplicationUser du = new ApplicationUser();
 
         // GET: Houses
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var houses = db.Houses.Include(h => h.Location).Include(xxx => xxx.Reservations);
@@ -55,7 +55,7 @@ namespace Tip4Trip_aka.Controllers
             FileName =  FileName.Trim() + FileExtension;
 
             //Get Upload path from Web.Config file AppSettings.  
-            string UploadPath = @"C:\Users\muntan\source\repos\Tip4Trip_aka\Tip4Trip_aka\UserImages\";
+            string UploadPath = @"C:\T4T1105eva\Tip4Trip_aka\UserImages\";
 
             //Its Create complete path to store in server.  
             membervalues.ImagePath = UploadPath + FileName;

@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tip4Trip_aka</RootNamespace>
     <AssemblyName>Tip4Trip_aka</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -28,6 +28,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,11 +57,7 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -187,45 +184,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904302216555_Initial.cs" />
-    <Compile Include="Migrations\201904302216555_Initial.Designer.cs">
-      <DependentUpon>201904302216555_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905011847117_Roles.cs" />
-    <Compile Include="Migrations\201905011847117_Roles.Designer.cs">
-      <DependentUpon>201905011847117_Roles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905030111246_userOfHouse.cs" />
-    <Compile Include="Migrations\201905030111246_userOfHouse.Designer.cs">
-      <DependentUpon>201905030111246_userOfHouse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905030128440_userOfHouse2.cs" />
-    <Compile Include="Migrations\201905030128440_userOfHouse2.Designer.cs">
-      <DependentUpon>201905030128440_userOfHouse2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905030141391_userOfHouse3.cs" />
-    <Compile Include="Migrations\201905030141391_userOfHouse3.Designer.cs">
-      <DependentUpon>201905030141391_userOfHouse3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905031336295_HouseUser3.cs" />
-    <Compile Include="Migrations\201905031336295_HouseUser3.Designer.cs">
-      <DependentUpon>201905031336295_HouseUser3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905031916510_paraskeyh.cs" />
-    <Compile Include="Migrations\201905031916510_paraskeyh.Designer.cs">
-      <DependentUpon>201905031916510_paraskeyh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905072057054_trith3.cs" />
-    <Compile Include="Migrations\201905072057054_trith3.Designer.cs">
-      <DependentUpon>201905072057054_trith3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905101850487_newn.cs" />
-    <Compile Include="Migrations\201905101850487_newn.Designer.cs">
-      <DependentUpon>201905101850487_newn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905102029384_newn2.cs" />
-    <Compile Include="Migrations\201905102029384_newn2.Designer.cs">
-      <DependentUpon>201905102029384_newn2.cs</DependentUpon>
+    <Compile Include="Migrations\201905121355084_11052019_01.cs" />
+    <Compile Include="Migrations\201905121355084_11052019_01.Designer.cs">
+      <DependentUpon>201905121355084_11052019_01.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -262,6 +223,47 @@
     <Content Include="Content\Images\tip-4-trip-logo.png" />
     <Content Include="Content\Images\tip-4-trip.png" />
     <Content Include="Content\Images\vacation_time-1494435.jpg" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
@@ -388,6 +390,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -476,38 +480,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904302216555_Initial.resx">
-      <DependentUpon>201904302216555_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905011847117_Roles.resx">
-      <DependentUpon>201905011847117_Roles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905030111246_userOfHouse.resx">
-      <DependentUpon>201905030111246_userOfHouse.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905030128440_userOfHouse2.resx">
-      <DependentUpon>201905030128440_userOfHouse2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905030141391_userOfHouse3.resx">
-      <DependentUpon>201905030141391_userOfHouse3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905031336295_HouseUser3.resx">
-      <DependentUpon>201905031336295_HouseUser3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905031916510_paraskeyh.resx">
-      <DependentUpon>201905031916510_paraskeyh.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905072057054_trith3.resx">
-      <DependentUpon>201905072057054_trith3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905101850487_newn.resx">
-      <DependentUpon>201905101850487_newn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905102029384_newn2.resx">
-      <DependentUpon>201905102029384_newn2.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -515,6 +487,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserImages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201905121355084_11052019_01.resx">
+      <DependentUpon>201905121355084_11052019_01.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

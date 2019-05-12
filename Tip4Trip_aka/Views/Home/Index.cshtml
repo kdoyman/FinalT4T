@@ -164,23 +164,27 @@
             <div class="row text-center">
                 <div class="col"></div>
                 <div class="col">
+                    @if (!Request.IsAuthenticated)
+                    {
+                  
                     <div class="shadow" id="login-banner">
                         <div class="pt-lg-4"><h2>Join us Now!</h2></div>
                         <br />
                         <div class="pl-lg-5 pr-lg-5 pt-lg-4">
                             <span>
                                 <button id="log-button" class="btn btn-outline-success btn-lg my-2 my-sm-0" type="button">
-                                    <i class="fa fa-user"></i><a href="http://localhost:50894/Account/Login"> Login</a>
+                                    <i class="fa fa-user"></i><a href="@Url.Action("Login", "Account")"> Login</a>
                                 </button>
                             </span>
                             <div class="m-1"><span style="font-size:1.5em;"> Or </span></div>
                             <span style="color:white;">
                                 <button id="reg-button" class="btn btn-outline-success btn-lg my-2 my-sm-0" type="button">
-                                    <i class="fa fa-sign-in"></i><a href="http://localhost:50894/Account/Register"> Register</a>
+                                    <i class="fa fa-sign-in"></i><a href="@Url.Action("Register", "Account")"> Register</a>
                                 </button>
                             </span>
                         </div>
                     </div>
+                    }
                 </div>
                 <div class="col"></div>
             </div>
