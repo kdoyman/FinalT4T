@@ -141,7 +141,8 @@ namespace Tip4Trip_aka.Controllers
         public ActionResult Create([Bind(Include = "Id,Title,OwnerId,Address,Description,LocationId,MaxOccupancy,PriceperNight")] House house)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-           // house.Owner = user;
+           
+            // house.Owner = user;
            // house.OwnerId = user.Id;
             if (ModelState.IsValid)
             {
@@ -214,7 +215,7 @@ namespace Tip4Trip_aka.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)

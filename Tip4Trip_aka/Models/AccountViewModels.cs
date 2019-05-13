@@ -63,6 +63,9 @@ namespace Tip4Trip_aka.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        private string rolename ;
+        public string Rolename { get { return rolename; } set { rolename = value; } }
     }
 
     public class RegisterViewModel
@@ -87,7 +90,10 @@ namespace Tip4Trip_aka.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-        public string Rolename { get;set; }
+
+        private string rolename="Renter";
+        public string Rolename { get { return rolename; } set { rolename = value; } }
+
         public ICollection<House> My_houses  { get; set; }
     }
 

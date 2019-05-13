@@ -1,0 +1,15 @@
+﻿@model Tip4Trip_aka.ViewModels.HouseReservationViewModel
+@{
+    ViewBag.Title = "MyReservations";
+}
+
+
+
+@foreach (Tip4Trip_aka.Models.Reservation item in Model.Reservations1)
+{
+    @item.HouseRes.Address
+    @item.HouseRes.Location.NameCity
+    <p>@item.StartDate</p>
+    <p>@item.EndDate</p>
+
+}

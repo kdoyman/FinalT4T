@@ -188,6 +188,18 @@
     <Compile Include="Migrations\201905121355084_11052019_01.Designer.cs">
       <DependentUpon>201905121355084_11052019_01.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905131636483_1305.cs" />
+    <Compile Include="Migrations\201905131636483_1305.Designer.cs">
+      <DependentUpon>201905131636483_1305.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905131652542_1305_2.cs" />
+    <Compile Include="Migrations\201905131652542_1305_2.Designer.cs">
+      <DependentUpon>201905131652542_1305_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905131721317_1305_3.cs" />
+    <Compile Include="Migrations\201905131721317_1305_3.Designer.cs">
+      <DependentUpon>201905131721317_1305_3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\House.cs" />
@@ -223,6 +235,7 @@
     <Content Include="Content\Images\tip-4-trip-logo.png" />
     <Content Include="Content\Images\tip-4-trip.png" />
     <Content Include="Content\Images\vacation_time-1494435.jpg" />
+    <Content Include="Content\Mitsos.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -473,6 +486,7 @@
     <Content Include="Views\Home\MyTrip.cshtml" />
     <Content Include="Views\Home\t4t.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\MyReservations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -491,6 +505,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905121355084_11052019_01.resx">
       <DependentUpon>201905121355084_11052019_01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905131636483_1305.resx">
+      <DependentUpon>201905131636483_1305.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905131652542_1305_2.resx">
+      <DependentUpon>201905131652542_1305_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905131721317_1305_3.resx">
+      <DependentUpon>201905131721317_1305_3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,6 +13,8 @@ namespace Tip4Trip_aka.Models
         [Display(Name ="Full Name"),Required]
         [StringLength(100)]
         public string FullName { get; set; }
+        //private string rolename;
+        //public string Rolename { get { return rolename; } set { rolename = value; } }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

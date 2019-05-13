@@ -1,5 +1,5 @@
 ﻿
-@{
+@*@{
     ViewBag.Title = "t4t";
 }
 
@@ -11,4 +11,26 @@
     <ol>
         <li>@Html.ActionLink("MyHouses", "MyTrip", "Home")</li>
     </ol>
-</form>
+</form>*@
+
+@{
+
+    ViewBag.Title = "T4T";
+
+}
+<div class="pl-lg-5 pr-lg-5 pt-lg-4">
+    @if (User.IsInRole("Owner") || User.IsInRole("Admin"))
+    {
+
+    <span>
+        <button class="btn btn-default my-2 my-sm-0 m-1" type="button">
+            <i class="fa fa-tree"></i><a href="@Url.Action("MyTrip", "Home")"> My Houses</a>
+        </button>
+    </span>
+    }
+    <span style="color:white !important;">
+        <button class="btn btn-default my-2 my-sm-0 m-1" type="button">
+            <i class="fa fa-tablet"></i><a href="@Url.Action("MyReservations", "Home")"> My Reservations</a>
+        </button>
+    </span>
+</div>

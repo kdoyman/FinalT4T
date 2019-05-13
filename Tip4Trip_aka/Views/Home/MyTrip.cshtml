@@ -17,19 +17,21 @@ house id:
     <h3>@it.MaxOccupancy</h3>
     <span>Price :</span>
     <h3>@it.PriceperNight</h3>
+    <h3>@it.Location.NameCity</h3>
     foreach (var obje in Model.HouseImages.Where(c => c.housId == it.Id))
     {
         if (obje.ImagePath != null)
         {
             string FileName = Path.GetFileNameWithoutExtension(obje.ImagePath);
 
-            //To Get File Extension  
+            //To Get File Extension
             string FileExtension = Path.GetExtension(obje.ImagePath);
 
-            //Add Current Date To Attached File Name  
+            //Add Current Date To Attached File Name
             FileName = FileName.Trim() + FileExtension;
-           <img src="../../UserImages/@FileName" />
-           
+            <img src="../../UserImages/@FileName" />
+
         }
+        
     }
 }

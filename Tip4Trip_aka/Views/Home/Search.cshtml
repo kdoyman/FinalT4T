@@ -5,6 +5,7 @@
 
 @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />*@
 <link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/Mitsos.css" rel="stylesheet" />
 <br /><br />
 <body id="home-back-img">
 </body>
@@ -12,72 +13,17 @@
     .center {
         text-align: right;
     }
-    .media-object.img-thumbnail {
-        max-width: none;
+
+    .topleft {
+        position: absolute;
+        top: 195px;
+        left: 19px;
+        font-size: 18px;
+        font-weight: bold;
+        color: ghostwhite;
+        text-shadow: 0px 0px 6px #17D687;
     }
 
-    img {
-        vertical-align: middle;
-    }
-
-    .img-responsive,
-    .thumbnail > img,
-    .thumbnail a > img,
-    .carousel-inner > .item > img,
-    .carousel-inner > .item > a > img {
-        display: block;
-        max-width: 100%;
-        height: auto;
-    }
-    .img-thumbnail {
-        display: inline-block;
-        max-width: 100%;
-        height: auto;
-        padding: 4px;
-        line-height: 1.42857143;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        -webkit-transition: all .2s ease-in-out;
-        -o-transition: all .2s ease-in-out;
-        transition: all .2s ease-in-out;
-    }
-    .thumbnail {
-        display: block;
-        padding: 4px;
-        margin-bottom: 20px;
-        line-height: 1.42857143;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        -webkit-transition: border .2s ease-in-out;
-        -o-transition: border .2s ease-in-out;
-        transition: border .2s ease-in-out;
-    }
-
-        .thumbnail > img,
-        .thumbnail a > img {
-            margin-right: auto;
-            margin-left: auto;
-        }
-
-    a.thumbnail:hover,
-    a.thumbnail:focus,
-    a.thumbnail.active {
-        border-color: #337ab7;
-    }
-
-    .thumbnail .caption {
-        padding: 9px;
-        color: #333;
-    }
-
-    div.Textoverflow {
-        white-space: nowrap;
-        width: 200px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
 </style>
 <head>
     <script>
@@ -316,7 +262,7 @@
 
     <form method="GET">
         @*<input type="text" id="locationsearch" placeholder="Search with location..." name="searching" />*@
-        <div class="ui-widget">
+        <div> @*class="container">*@
             <select id="combobox" name="searching" placeholder="Search with location...">
                 <option value="">Select your option</option>
                 <option value="Kalamaria">Kalamaria</option>
@@ -326,13 +272,21 @@
                 <option value="Kozani">Kozani</option>
                 <option value="Trikala">Trikala</option>
             </select>
-        </div>
-        <br />
-        <div class="container">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="text" id="Sstartdate" name="Sstartdate" placeholder="Check In">
             <input type="text" id="Enddate" name="Enddate" placeholder="Check Out">
             @*<label for="occupantsearch">Number of Occupants</label>*@
             <input type="number" id="occupantsearch" name="occupantsearch" placeholder="Number of Occupants" min="1" max="10">
+            <br />
+            <br />
+            <input type="submit" class="btn btn-primary" value="T4Trip Search" />
+        </div>
+        <br />
+        @*<div class="container">
+            <input type="text" id="Sstartdate" name="Sstartdate" placeholder="Check In">
+            <input type="text" id="Enddate" name="Enddate" placeholder="Check Out">*@
+            @*<label for="occupantsearch">Number of Occupants</label>*@
+            @*<input type="number" id="occupantsearch" name="occupantsearch" placeholder="Number of Occupants" min="1" max="10">*@
 
             @*<label for="speed">Select a speed</label>
                 <select name="searching" id="speed">
@@ -342,12 +296,104 @@
                     <option>Fast</option>
                     <option>Faster</option>
                 </select>*@
-            <br />
+            @*<br />
             <br />
             <input type="submit" class="btn btn-primary" value="T4Trip Search" />
-        </div>
+        </div>*@
     </form>
     <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Search results</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                @if (Model.houses.Count() == 0)
+                {
+                    <p colspan="3" style="color:red">
+                        Try a new Search
+                        <br />
+                        <br />
+                        @*@Html.ActionLink("Try a new Search", "Index", "Home")*@
+                    </p>
+                }
+                else
+                {
+                    foreach (Tip4Trip_aka.Models.House item in Model.houses)
+                    {
+                        <div class="col-xs-6 col-md-3">
+                            @if (Model.HouseImages.Where(c => c.housId == item.Id).Count() == 0)
+                            {
+                                <a href="@Url.Action("Details", "Houses",new { id = item.Id })" class="thumbnail">
+                                    <img src="https://images.unsplash.com/photo-1475855581690-80accde3ae2b" alt="Pic">
+                                </a>
+                            }
+
+                            @foreach (var obje in Model.HouseImages.Where(c => c.housId == item.Id))
+                            {
+                                if (obje.ImagePath != null)
+                                {
+                                    string FileName = Path.GetFileNameWithoutExtension(obje.ImagePath);
+
+                                    //To Get File Extension
+                                    string FileExtension = Path.GetExtension(obje.ImagePath);
+
+                                    //Add Current Date To Attached File Name
+                                    FileName = FileName.Trim() + FileExtension;
+
+                                <a href="@Url.Action("Details", "Houses",new { id = item.Id })" class="thumbnail">
+                                    <img src="../../UserImages/@FileName" alt="Pic">
+                                    <div class="topleft">Click here for more details</div>
+
+                                </a>
+
+
+                            }
+                                break;
+                            }
+                            <ul>
+                                <li>House Title: @item.Title</li>
+                                <li>Location:@item.Location.NameCity </li>
+                                <li>Maximum occupancy:@item.MaxOccupancy </li>
+                                <li>Price per night:@item.PriceperNight </li>
+                                <li><div class="Textoverflow">@item.Description</div></li>
+                            </ul>
+
+                            @if (Model.reservations.Where(mn => mn.HouseId == item.Id).Count() == 0)
+                            {
+                                <b>Available </b>}
+                            @if (Model.reservations.Where(mn => mn.HouseId == item.Id).Count() != 0)
+                            {
+
+                                <b>This property is reserved for the following dates:</b>
+
+                            }
+                            @foreach (Tip4Trip_aka.Models.Reservation itemres in Model.reservations.Where(mn => mn.HouseId == item.Id))
+                            {
+
+
+
+
+                                <ul>
+                                    <li>From: @itemres.StartDate.Date.ToShortDateString() </li>
+                                    <li>To: @itemres.EndDate.Date.ToShortDateString() </li>
+                                </ul>
+
+
+                            }
+                            <p> @Html.ActionLink("Book now", "Create", "Reservations", new { HouseId = item.Id, Occupants = item.MaxOccupancy, PricePerNightCharged = item.PriceperNight, DateOfBooking = DateTime.Today }, new { @class = "btn btn-default" })</p>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+
+    @*<div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Search results</h3>
         </div>
@@ -366,67 +412,67 @@
                 {
                     foreach (Tip4Trip_aka.Models.House item in Model.houses)
                     {
-                    <div class="col-xs-6 col-md-3">
-                        @if (Model.HouseImages.Where(c => c.housId == item.Id).Count() == 0)
-                        {
-                            <a href="@Url.Action("Details", "Houses",new { id = item.Id })" class="thumbnail">
-                                <img src="https://images.unsplash.com/photo-1475855581690-80accde3ae2b" alt="Pic">
-                            </a>
-                        }
-
-                        @foreach (var obje in Model.HouseImages.Where(c => c.housId == item.Id))
-                        {
-                            if (obje.ImagePath != null)
+                        <div class="col-xs-6 col-md-3">
+                            @if (Model.HouseImages.Where(c => c.housId == item.Id).Count() == 0)
                             {
-                                string FileName = Path.GetFileNameWithoutExtension(obje.ImagePath);
-
-                                //To Get File Extension
-                                string FileExtension = Path.GetExtension(obje.ImagePath);
-
-                                //Add Current Date To Attached File Name
-                                FileName = FileName.Trim() + FileExtension;
-
                                 <a href="@Url.Action("Details", "Houses",new { id = item.Id })" class="thumbnail">
-                                    <img src="../../UserImages/@FileName" alt="Pic">
+                                    <img src="https://images.unsplash.com/photo-1475855581690-80accde3ae2b" alt="Pic">
                                 </a>
+                            }
 
+                            @foreach (var obje in Model.HouseImages.Where(c => c.housId == item.Id))
+                            {
+                                if (obje.ImagePath != null)
+                                {
+                                    string FileName = Path.GetFileNameWithoutExtension(obje.ImagePath);
+
+                                    //To Get File Extension
+                                    string FileExtension = Path.GetExtension(obje.ImagePath);
+
+                                    //Add Current Date To Attached File Name
+                                    FileName = FileName.Trim() + FileExtension;
+
+                                    <a href="@Url.Action("Details", "Houses",new { id = item.Id })" class="thumbnail">
+                                        <img src="../../UserImages/@FileName" alt="Pic">
+                                    </a>
+
+
+                                }
+                                break;
+                            }
+                            <ul>
+                                <li>House Title: @item.Title</li>
+                                <li>Location:@item.Location.NameCity </li>
+                                <li>Maximum occupancy:@item.MaxOccupancy </li>
+                                <li>Price per night:@item.PriceperNight </li>
+                                <li><div class="Textoverflow">@item.Description</div></li>
+                            </ul>
+                            <p> @Html.ActionLink("Book me now !", "Create", "Reservations", new { HouseId = item.Id, Occupants = item.MaxOccupancy, PricePerNightCharged = item.PriceperNight, DateOfBooking = DateTime.Today }, new { @class = "btn btn-default" })</p>
+                            @if (Model.reservations.Where(mn => mn.HouseId == item.Id).Count() == 0)
+                            {
+                                <th>Available !!</th>}
+                            @if (Model.reservations.Where(mn => mn.HouseId == item.Id).Count() != 0)
+                            {
+
+                                <h6 style="background-color:Tomato;">This property is reserved for the following dates</h6>}
+                            @foreach (Tip4Trip_aka.Models.Reservation itemres in Model.reservations.Where(mn => mn.HouseId == item.Id))
+                            {
+
+
+
+
+                                <li>
+                                    From:
+                                    @itemres.StartDate.Date.ToShortDateString()
+                                    To:
+                                    @itemres.EndDate.Date.ToShortDateString()
+                                </li>
+                                <br />
 
                             }
-                            break;
-                        }
-                        <ul>
-                            <li>House Title: @item.Title</li>
-                            <li>Location:@item.Location.NameCity </li>
-                            <li>Maximum occupancy:@item.MaxOccupancy </li>
-                            <li>Price per night:@item.PriceperNight </li>
-                            <li><div class="Textoverflow">@item.Description</div></li>
-                        </ul>
-                        <p> @Html.ActionLink("Book me now !", "Create", "Reservations", new { HouseId = item.Id, Occupants = item.MaxOccupancy, PricePerNightCharged = item.PriceperNight, DateOfBooking = DateTime.Today }, new { @class = "btn btn-default" })</p>
-                        @if (Model.reservations.Where(mn => mn.HouseId == item.Id).Count() == 0)
-                        {
-                            <th>Available !!</th>}
-                        @if (Model.reservations.Where(mn => mn.HouseId == item.Id).Count() != 0)
-                        {
-                            
-                            <h6 style="background-color:Tomato;">This property is reserved for the following dates</h6>}
-                        @foreach (Tip4Trip_aka.Models.Reservation itemres in Model.reservations.Where(mn => mn.HouseId == item.Id))
-                        {
-
-
-
-
-                            <li>
-                                From:
-                                @itemres.StartDate.Date.ToShortDateString()
-                                To:
-                                @itemres.EndDate.Date.ToShortDateString()
-                            </li>
-                            <br />
-
-                        }
-                    </div>
+                        </div>
                     }
                 }
             </div>
         </div>
-    </div>
+    </div>*@
