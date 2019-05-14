@@ -3,35 +3,56 @@
     ViewBag.Title = "MyTrip";
 }
 
-<h2>MyTrip</h2>
+<h2>My Houses</h2>
 
-<h4>Hi </h4>
-<span>@Model.User.Email</span>
+@*<h4>Hello @Model.User.Email</h4>*@
 
-house id:
-
-@foreach (Tip4Trip_aka.Models.House it in Model.Houses)
-{
-    <h3>@it.Address</h3>
-    <span>Posous xvraei :</span>
-    <h3>@it.MaxOccupancy</h3>
-    <span>Price :</span>
-    <h3>@it.PriceperNight</h3>
-    <h3>@it.Location.NameCity</h3>
-    foreach (var obje in Model.HouseImages.Where(c => c.housId == it.Id))
+<table class="table table-bordered text-center">
+    <thead>
+        <tr>
+            <th>House Location</th>
+            <th>House Address</th>
+            <th>Max Occupancy</th>
+            <th>Price per Night Charged</th>
+            <th>House Image</th>
+            <th>House Image</th>
+        </tr>
+    </thead>
+    @foreach (Tip4Trip_aka.Models.House it in Model.Houses)
     {
-        if (obje.ImagePath != null)
-        {
-            string FileName = Path.GetFileNameWithoutExtension(obje.ImagePath);
+        <tbody>
+            <tr>
 
-            //To Get File Extension
-            string FileExtension = Path.GetExtension(obje.ImagePath);
+                <td>@it.Location.NameCity</td>
+                <td>@it.Address</td>
+                <td>@it.MaxOccupancy</td>
+                <td>@it.PriceperNight</td>
+                <td>
+                    @foreach (var obje in Model.HouseImages.Where(c => c.housId == it.Id))
+                    {
+                        if (obje.ImagePath != null)
+                        {
+                            string FileName = Path.GetFileNameWithoutExtension(obje.ImagePath);
 
-            //Add Current Date To Attached File Name
-            FileName = FileName.Trim() + FileExtension;
-            <img src="../../UserImages/@FileName" />
+                            //To Get File Extension
+                            string FileExtension = Path.GetExtension(obje.ImagePath);
 
-        }
-        
+                            //Add Current Date To Attached File Name
+                            FileName = FileName.Trim() + FileExtension;
+                            <img src="../../UserImages/@FileName" class="img-thumbnail" alt="An image should be here!" width="100" height="50" />
+
+                        }
+
+                    }
+                </td>
+                @*<td>@Html.ActionLink("Detailas", "Details", "Houses", new { id = it.Id }) </td>
+               <td><a href="@Url.Action("Details", "Houses",new { id = it.Id })"></a></td>*@
+               <td><a href="@Url.Action("Details", "Houses",new { id = it.Id })">Details</a></td>
+
+
+            </tr>
+        </tbody>
+
+
     }
-}
+</table>

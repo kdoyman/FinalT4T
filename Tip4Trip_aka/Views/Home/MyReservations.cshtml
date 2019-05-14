@@ -1,15 +1,61 @@
 ﻿@model Tip4Trip_aka.ViewModels.HouseReservationViewModel
 @{
-    ViewBag.Title = "MyReservations";
+                /**/
+
+                ViewBag.Title = "MyReservations";
 }
 
+<h2>My Reservations</h2>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
 
 
-@foreach (Tip4Trip_aka.Models.Reservation item in Model.Reservations1)
-{
-    @item.HouseRes.Address
-    @item.HouseRes.Location.NameCity
-    <p>@item.StartDate</p>
-    <p>@item.EndDate</p>
+    @*<h5><b>House Location:</b>&nbsp;@item.HouseRes.Address , @item.HouseRes.Location.NameCity </h5>
 
-}
+
+        <p>@item.StartDate</p>
+        <p>@item.EndDate</p>*@
+
+    
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>House Location</th>
+                    <th>House Address</th>
+                    <th>Reservation Check In Date</th>
+                    <th>Reservation Check Out Date</th>
+                </tr>
+            </thead>
+            @foreach (Tip4Trip_aka.Models.Reservation item in Model.Reservations1)
+            {
+                <tbody>
+                    <tr>
+                          
+                        <td>@item.HouseRes.Location.NameCity</td>
+                        <td>@item.HouseRes.Address</td>
+                        <td>@item.StartDate.ToShortDateString()</td>
+                        <td>@item.EndDate.ToShortDateString()</td>
+                    </tr>
+                </tbody>
+            }
+            </table>
+   
+
+
+            @Html.ActionLink("Back to Search", "Search", "Home")

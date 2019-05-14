@@ -11,6 +11,7 @@ using Tip4Trip_aka.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.IO;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Tip4Trip_aka.Controllers
 {
@@ -141,9 +142,19 @@ namespace Tip4Trip_aka.Controllers
         public ActionResult Create([Bind(Include = "Id,Title,OwnerId,Address,Description,LocationId,MaxOccupancy,PriceperNight")] House house)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-           
+            var UserManagers = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var AuthManager = HttpContext.GetOwinContext().Authentication;
+            if (User.IsInRole("Renter"))
+            {
+
+                UserManagers.RemoveFromRole(user.Id, "Renter");
+
+                UserManagers.AddToRole(user.Id, "Owner");
+
+                AuthManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie, DefaultAuthenticationTypes.ExternalCookie);
+            }
             // house.Owner = user;
-           // house.OwnerId = user.Id;
+            // house.OwnerId = user.Id;
             if (ModelState.IsValid)
             {
                 db.Houses.Add(house);
@@ -209,13 +220,37 @@ namespace Tip4Trip_aka.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
+
         {
+
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            var UserManagers = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+
+            if (User.IsInRole("Owner"))
+
+            {
+
+                if (db.Houses.Where(g => g.OwnerId == user.Id).Count() == 1)
+                {
+
+                    UserManagers.RemoveFromRole(user.Id, "Owner");
+
+                    UserManagers.AddToRole(user.Id, "Renter");
+
+                }
+
+            }
             House house = db.Houses.Find(id);
+
             db.Houses.Remove(house);
+
             db.SaveChanges();
+
             return RedirectToAction("Index");
+
         }
-       
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

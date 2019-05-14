@@ -200,8 +200,17 @@
     <Compile Include="Migrations\201905131721317_1305_3.Designer.cs">
       <DependentUpon>201905131721317_1305_3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905140545551_1405_1.cs" />
+    <Compile Include="Migrations\201905140545551_1405_1.Designer.cs">
+      <DependentUpon>201905140545551_1405_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905141552518_1405_3.cs" />
+    <Compile Include="Migrations\201905141552518_1405_3.Designer.cs">
+      <DependentUpon>201905141552518_1405_3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\House.cs" />
     <Compile Include="Models\HouseImage.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -514,6 +523,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905131721317_1305_3.resx">
       <DependentUpon>201905131721317_1305_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905140545551_1405_1.resx">
+      <DependentUpon>201905140545551_1405_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905141552518_1405_3.resx">
+      <DependentUpon>201905141552518_1405_3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

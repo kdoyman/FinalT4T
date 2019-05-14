@@ -179,43 +179,8 @@
             });
         });
     </script>
-    @*<script>
-            $(function () {
-                var availableTags = [
-                    "Kalamaria",
-                    "Evosmos",
-                    "Ampelokipoi",
-                    "Thessaloniki",
-                    "Harilaou",
-                    "Toumba",
-                    "Halkidiki",
-                    "Kozani"
-                ];
-                $("#locationsearch").autocomplete({
-                    source: availableTags
-                });
-            });
-        </script>*@
-
-    @*<script>
-            $(function () {
-                $("#speed").selectmenu();
-            });
-        </script>*@
-
 </head>
-@*<style>
-        fieldset {
-            border: 0;
-        }
-        label {
-            display: block;
-            margin: 30px 0 0 0;
-        }
-        .overflow {
-            height: 200px;
-        }
-    </style>*@
+
 <style>
     .custom-combobox {
         position: relative;
@@ -236,29 +201,6 @@
     }
 </style>
 <body>
-
-
-    @*<body id="home-back-img">
-        </body>*@
-
-    @*<style>
-            .center {
-                text-align: right;
-            }
-        </style>*@
-
-    @*@using (Html.BeginForm("Index", "Home", FormMethod.Get))
-        {
-            <div class="center">
-                @Html.TextBox("searching", null, new { @class = "form-control", @placeholder = "Search With Location Name" })*@
-    @*@Html.TextBox("Address", null, new { @class = "form-control", @placeholder = "Search With Address" })*@
-    @*@Html.TextBox("Sstartdate", null, new { @type = "date", @class = "form-control", @placeholder = "Search With Start Date" })
-                @Html.TextBox("Enddate", null, new { @type = "date", @class = "form-control", @placeholder = "Search With End Date" })
-                <input type="submit" value="T4Trip Search" />
-            </div>
-        }*@
-
-
 
     <form method="GET">
         @*<input type="text" id="locationsearch" placeholder="Search with location..." name="searching" />*@

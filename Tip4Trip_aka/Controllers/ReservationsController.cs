@@ -63,7 +63,8 @@ namespace Tip4Trip_aka.Controllers
                 }
                 db.Reservations.Add(reservation);
                 db.SaveChanges();
-                return RedirectToAction("mazi","Houses",new { idilicious=reservation.HouseId });
+                return RedirectToAction("MyReservations", "Home");
+                //return RedirectToAction("mazi","Houses",new { idilicious=reservation.HouseId });
             }
 
             ViewBag.HouseId = new SelectList(db.Houses, "Id", "Title", reservation.HouseId);

@@ -22,15 +22,24 @@
     @if (User.IsInRole("Owner") || User.IsInRole("Admin"))
     {
 
-    <span>
-        <button class="btn btn-default my-2 my-sm-0 m-1" type="button">
-            <i class="fa fa-tree"></i><a href="@Url.Action("MyTrip", "Home")"> My Houses</a>
-        </button>
-    </span>
+        <span>
+            <button class="btn btn-default my-2 my-sm-0 m-1" type="button">
+                <i class="fa fa-home"></i><a href="@Url.Action("MyTrip", "Home")"> My Houses</a>
+            </button>
+        </span>
+    }
+    @if (User.IsInRole("Renter") )
+    {
+
+        <span>
+            <button class="btn btn-default my-2 my-sm-0 m-1" type="button">
+                <i class="fa fa-drivers-license"></i><a href="@Url.Action("Create", "Houses")"> I want to rent my house to others!</a>
+            </button>
+        </span>
     }
     <span style="color:white !important;">
         <button class="btn btn-default my-2 my-sm-0 m-1" type="button">
-            <i class="fa fa-tablet"></i><a href="@Url.Action("MyReservations", "Home")"> My Reservations</a>
+            <i class="fa fa-book"></i><a href="@Url.Action("MyReservations", "Home")"> My Reservations</a>
         </button>
     </span>
 </div>

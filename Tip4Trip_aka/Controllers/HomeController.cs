@@ -44,6 +44,7 @@ namespace Tip4Trip_aka.Controllers
             return View();
 
         }
+        [Authorize]
         public ActionResult MyReservations()
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
@@ -66,11 +67,12 @@ namespace Tip4Trip_aka.Controllers
 
             return View();
         }
-        public ActionResult Search(string searching, DateTime? Sstartdate, DateTime? Enddate)
+        public ActionResult Search(string searching, DateTime? Sstartdate, DateTime? Enddate , int? occupantsearch)
         {
-            var Hous = db.Houses.Include(xxx => xxx.Reservations).Include(mmn => mmn.Location).Where(x => x.Location.NameCity.Contains(searching));
-
-            var res = db.Reservations.Where(c => (c.StartDate <= Sstartdate.Value) && (c.EndDate >= Sstartdate.Value)).ToList();
+            var Hous = db.Houses.Include(xxx => xxx.Reservations).Include(mmn => mmn.Location).Where(x => x.Location.NameCity.Contains(searching)).Where(l=>l.MaxOccupancy >= occupantsearch);
+            if (occupantsearch == null)
+            {  Hous = db.Houses.Include(xxx => xxx.Reservations).Include(mmn => mmn.Location).Where(x => x.Location.NameCity.Contains(searching)); }
+                var res = db.Reservations.Where(c => (c.StartDate <= Sstartdate.Value) && (c.EndDate >= Sstartdate.Value)).ToList();
             var res2 = db.Reservations.Where(c => (c.StartDate >= Sstartdate.Value) && (c.StartDate <= Enddate.Value)).ToList();
             var res3 = db.Reservations.Where(c => (c.EndDate >= Enddate.Value) && (c.StartDate <= Enddate.Value)).ToList();
             var res12 = res.Concat(res2);

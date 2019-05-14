@@ -40,7 +40,7 @@
             <div class="animated-icon1"><span></span><span></span><span></span></div>
         </button>
         <div class="container" id="navbarSupportedContent">
-            <div class="collapse navbar-collapse ml-5 mx-auto">
+            <div class="collapse navbar-collapse ml-5 mx-auto" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item m-lg-3">@Html.ActionLink("Home", "Index", "Home")</li>
                     <li class="nav-item m-lg-3">@Html.ActionLink("About", "About", "Home")</li>
@@ -49,15 +49,11 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item m-lg-3">@Html.ActionLink("Search", "Search", "Home")</li>
-                        <li class="nav-item m-lg-3"> @Html.ActionLink("Houses", "Index", "Houses")</li>
-                        <li class="nav-item m-lg-3">
-                            <a href="@Url.Action("T4T", "Home")">
-                                <div src="" class="image-mytrip-link"></div>
-                            </a>
-                        </li>
-                        <li class="nav-item m-lg-3">
-                            @Html.ActionLink("Reservations", "Index", "Reservations")
-                        </li>
+                        @*<li class="nav-item m-lg-3"> @Html.ActionLink("Houses", "Index", "Houses")</li>*@
+
+                        @*<li class="nav-item m-lg-3">
+                    @Html.ActionLink("Reservations", "Index", "Reservations")
+                </li>*@
 
                         if (User.IsInRole("Admin"))
                         {
@@ -67,12 +63,17 @@
                                 @Html.ActionLink("Locations", "Index", "Locations")
                             </li>
 
-                            <li class="nav-item m-lg-3">
-                                @Html.ActionLink("mazi", "mazi", "Houses", new { idilicious = 2 }, null)
-                            </li>
+                            @*<li class="nav-item m-lg-3">
+                        @Html.ActionLink("mazi", "mazi", "Houses", new { idilicious = 2 }, null)
+                    </li>*@
                         }
                     }
                 </ul>
+                <span class="nav-item m-lg-3">
+                    <a href="@Url.Action("T4T", "Home")">
+                        <div src="" class="image-mytrip-link"></div>
+                    </a>
+                </span>
                 @Html.Partial("_LoginPartial")
             </div>
             @*<form class="form-inline my-2 my-lg-0">
