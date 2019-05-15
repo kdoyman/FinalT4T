@@ -1,21 +1,20 @@
 ﻿@model Tip4Trip_aka.Models.HouseImage
 
 @{
-    ViewBag.Title = "Imageget";
+    ViewBag.Title = "MyT4T House Images";
 }
 
-<h2>Imageget</h2>
+<h2>MyT4T House Images</h2>
 
 @using (Html.BeginForm("Imageget", "Houses", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>HouseImage</h4>
-        <hr />
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.housId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <h4>House ID</h4>@*@Html.LabelFor(model => model.housId, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.housId, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.housId, "", new { @class = "text-danger" })
@@ -31,14 +30,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Upload" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to My Houses", "MyTrip" , "Home")
 </div>
 
 @section Scripts {

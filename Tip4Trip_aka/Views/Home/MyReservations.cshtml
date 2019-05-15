@@ -36,6 +36,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
+                    <th>Reservation Reference ID</th>
                     <th>House Location</th>
                     <th>House Address</th>
                     <th>Reservation Check In Date</th>
@@ -46,7 +47,7 @@
             {
                 <tbody>
                     <tr>
-                          
+                        <td>@item.Id</td>
                         <td>@item.HouseRes.Location.NameCity</td>
                         <td>@item.HouseRes.Address</td>
                         <td>@item.StartDate.ToShortDateString()</td>
@@ -58,4 +59,4 @@
    
 
 
-            @Html.ActionLink("Back to Search", "Search", "Home")
+            @Html.ActionLink("Back to MyT4T", "T4T", "Home")

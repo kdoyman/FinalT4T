@@ -5,6 +5,7 @@
 }
 
 <h2>One more step</h2>
+<h3>@ViewBag.Message</h3>
 
 @using (Html.BeginForm()) 
 {
@@ -89,5 +90,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Go to My Reservations", "MyReservations","Home")
 </div>

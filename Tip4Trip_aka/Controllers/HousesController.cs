@@ -75,7 +75,7 @@ namespace Tip4Trip_aka.Controllers
             {
                 db.HouseImages.Add(_member);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MyTrip","Home");
             }
             return View();
         }
@@ -118,7 +118,15 @@ namespace Tip4Trip_aka.Controllers
             {
                 return HttpNotFound();
             }
-            return View(house);
+
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            List<House> list = new List<House> { };
+            var Images = db.HouseImages.ToList();
+           
+            list.Add(house);
+            UserHousesViewModel ViewModel = new UserHousesViewModel { User = user, Houses = list , HouseImages = Images};
+
+            return View(ViewModel);
         }
 
         // GET: Houses/Create
@@ -159,7 +167,7 @@ namespace Tip4Trip_aka.Controllers
             {
                 db.Houses.Add(house);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MyTrip","Home");
             }
             List<House> list = new List<House> { };
             list.Add(house);

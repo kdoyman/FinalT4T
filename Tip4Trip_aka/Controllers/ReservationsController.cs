@@ -57,7 +57,9 @@ namespace Tip4Trip_aka.Controllers
                 {
                     if ((reservation.StartDate >= item.StartDate && reservation.StartDate < item.EndDate) || (reservation.EndDate > item.StartDate && reservation.EndDate <= item.EndDate))
                     {
-                        return Content(" The Dates You want to rent the House are allready closed , Sorry ! Please check the list and try again ");
+                        //return Content(" The Dates You want to rent the House are already closed , Sorry ! Please check the list and try again ");
+                        ViewBag.Message = "The Dates you want to rent the House are already booked , Sorry ! Please check the list and try again";
+                        return View();
                     }
 
                 }

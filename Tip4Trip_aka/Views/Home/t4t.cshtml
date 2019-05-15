@@ -1,23 +1,23 @@
-﻿
-@*@{
-    ViewBag.Title = "t4t";
-}
+﻿@*@{
+        ViewBag.Title = "t4t";
+    }
 
-<h2>t4t</h2>
+    <h2>t4t</h2>
 
-<form method="post" id="signin" action="@Url.Action("MyTrip", "Home")">
+    <form method="post" id="signin" action="@Url.Action("MyTrip", "Home")">
 
-    <input type="button" value="MyTip4Trip" />
-    <ol>
-        <li>@Html.ActionLink("MyHouses", "MyTrip", "Home")</li>
-    </ol>
-</form>*@
+        <input type="button" value="MyTip4Trip" />
+        <ol>
+            <li>@Html.ActionLink("MyHouses", "MyTrip", "Home")</li>
+        </ol>
+    </form>*@
 
 @{
 
     ViewBag.Title = "T4T";
 
 }
+
 <div class="pl-lg-5 pr-lg-5 pt-lg-4">
     @if (User.IsInRole("Owner") || User.IsInRole("Admin"))
     {
@@ -28,12 +28,12 @@
             </button>
         </span>
     }
-    @if (User.IsInRole("Renter") )
+    @if (User.IsInRole("Renter"))
     {
 
         <span>
             <button class="btn btn-default my-2 my-sm-0 m-1" type="button">
-                <i class="fa fa-drivers-license"></i><a href="@Url.Action("Create", "Houses")"> I want to rent my house to others!</a>
+                <i class="fa fa-drivers-license"></i><a href="@Url.Action("Create", "Houses")"> Become a host!</a>
             </button>
         </span>
     }
