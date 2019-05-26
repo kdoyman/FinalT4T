@@ -56,7 +56,7 @@ namespace Tip4Trip_aka.Controllers
             FileName =  FileName.Trim() + FileExtension;
 
             //Get Upload path from Web.Config file AppSettings.  
-            string UploadPath = @"C:\T4T1105eva\Tip4Trip_aka\UserImages\";
+            string UploadPath = @"C:\Users\muntan\source\repos\Tip4TripFinalF\Tip4Trip_aka\UserImages\";
 
             //Its Create complete path to store in server.  
             membervalues.ImagePath = UploadPath + FileName;

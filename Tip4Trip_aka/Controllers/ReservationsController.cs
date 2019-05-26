@@ -34,7 +34,29 @@ namespace Tip4Trip_aka.Controllers
             {
                 return HttpNotFound();
             }
-            return View(reservation);
+            var poso = reservation.PricePerNightCharged;
+            //ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var house = db.Houses.Where(c => c.Id == reservation.HouseId).First();
+            if (reservation.RenterId == house.OwnerId) { poso = 0; }
+            if (reservation.EndDate.Year == reservation.StartDate.Year)
+            {
+                double dx = (double)(reservation.EndDate.DayOfYear - reservation.StartDate.DayOfYear) * poso;
+                ViewBag.Message = "Your Reservation Total is :" + dx;
+                return View(reservation);
+            }
+            if (reservation.EndDate.Year - reservation.StartDate.Year == 1)
+            {
+                double dx = (double)((reservation.EndDate.DayOfYear * poso) + ((365 - reservation.StartDate.DayOfYear) * poso));
+                ViewBag.Message = "Your Reservation Total is :" + dx;
+                return View(reservation);
+            }
+            if (reservation.EndDate.Year - reservation.StartDate.Year > 1)
+            {
+                double dx = (double)((reservation.EndDate.DayOfYear * poso) + ((365 - reservation.StartDate.DayOfYear) * poso) + ((reservation.EndDate.Year - reservation.StartDate.Year - 1) * poso));
+                ViewBag.Message = "Your Reservation Total is :" + dx;
+                return View(reservation);
+            }
+            return View();
         }
 
         // GET: Reservations/Create
